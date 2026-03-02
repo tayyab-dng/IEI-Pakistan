@@ -1,0 +1,40 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&f[]=nohemi@900,700,500,400,600,100,300,200,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary-bg text-primary-fg font-sans antialiased overflow-x-hidden;
+    /* Optional: custom selection color */
+    ::selection {
+      @apply bg-accent text-white;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Lenis recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
