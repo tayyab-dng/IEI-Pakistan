@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-export default function MagneticFillButton({ children, href = "#", className = "" }) {
+export default function MagneticFillButton({ children, href = "#", className = "", fillColor = "bg-[#FFC107]" }) {
     const buttonRef = useRef(null);
     const textRef = useRef(null);
     const textInvertedRef = useRef(null);
@@ -50,7 +50,7 @@ export default function MagneticFillButton({ children, href = "#", className = "
             {/* Fill Animation Background */}
             <span
                 ref={fillRef}
-                className="absolute inset-0 bg-accent translate-y-[100%] rounded-full group-hover:translate-y-0 origin-bottom transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                className={`absolute inset-0 ${fillColor} translate-y-[100%] rounded-full group-hover:translate-y-0 origin-bottom transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]`}
             ></span>
 
             {/* Container for Text Swap */}
@@ -66,7 +66,7 @@ export default function MagneticFillButton({ children, href = "#", className = "
                 {/* Inverted Text (White/Black depending on Accent) */}
                 <span
                     ref={textInvertedRef}
-                    className="absolute inset-0 block text-white translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
+                    className="absolute inset-0 block text-black translate-y-[120%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
                     aria-hidden="true"
                 >
                     {children}

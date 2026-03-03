@@ -6,36 +6,78 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
+const programmes = [
     {
         id: 1,
-        title: 'MC Interior Design',
-        industry: 'INTERIOR DESIGN',
-        category: 'BRANDING • DESIGN • DEVELOPMENT',
-        description: 'Well-being & Harmony to Interior Spaces',
-        kpi: '+89%',
-        kpiLabel: 'Traffic Growth',
-        image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2000&auto=format&fit=crop'
+        title: 'Climate Educator Training Programme',
+        category: 'Environmental Education',
+        description: 'Training teachers to integrate climate education into their curriculum',
+        stat: '50+',
+        statLabel: 'Teachers Trained',
+        image: '/images/hero/slide-2.webp' // Reusing a mountain school image as a placeholder
     },
     {
         id: 2,
-        title: 'RecruiterOne',
-        industry: 'HUMAN RESOURCES',
-        category: 'DEVELOPMENT',
-        description: 'Transforming Recruitment for Entrepreneurs',
-        kpi: '+60%',
-        kpiLabel: 'Conversion Increases',
-        image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop'
+        title: 'ECD School Ispinji, Chipursan',
+        category: 'Early Childhood Development',
+        description: 'Quality early education in one of Pakistan\'s most remote valleys',
+        stat: '100+',
+        statLabel: 'Children Enrolled',
+        image: '/images/hero/slide-1.webp'
     },
     {
         id: 3,
-        title: 'Aura Studio',
-        industry: 'E-COMMERCE',
-        category: 'DESIGN / UI',
-        description: 'High-end aesthetic shopping experience',
-        kpi: '+45%',
-        kpiLabel: 'AOV Lift',
-        image: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1600&auto=format&fit=crop'
+        title: 'Libraries for Public Schools',
+        category: 'Infrastructure & Resources',
+        description: 'Creating colorful, playful learning spaces with books and digital tools',
+        stat: '15+',
+        statLabel: 'Libraries Established',
+        image: '/images/hero/slide-5.webp'
+    },
+    {
+        id: 4,
+        title: 'Saheli Circles',
+        category: 'Youth Empowerment',
+        description: 'Mentorship circles fostering leadership among young women',
+        stat: '200+',
+        statLabel: 'Girls Participating',
+        image: '/images/hero/slide-4.webp'
+    },
+    {
+        id: 5,
+        title: 'Tech Sahelis Programme',
+        category: 'Digital Literacy',
+        description: 'Empowering women with technology and digital skills training',
+        stat: '150+',
+        statLabel: 'Women Trained',
+        image: '/images/hero/slide-3.webp'
+    },
+    {
+        id: 6,
+        title: 'Community Films',
+        category: 'Media & Arts',
+        description: 'Documenting stories and voices from remote mountain communities',
+        stat: '10+',
+        statLabel: 'Films Produced',
+        image: 'https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1600&auto=format&fit=crop'
+    },
+    {
+        id: 7,
+        title: 'Annual Summer Camp',
+        category: 'Experiential Learning',
+        description: 'Immersive learning combining education, art, and adventure',
+        stat: '300+',
+        statLabel: 'Campers Annually',
+        image: 'https://images.unsplash.com/photo-1533222481259-ce20eda1e20b?q=80&w=1600&auto=format&fit=crop'
+    },
+    {
+        id: 8,
+        title: 'Saheli Leader Fellowship',
+        category: 'Leadership Development',
+        description: 'Intensive fellowship preparing young women as community leaders',
+        stat: '25+',
+        statLabel: 'Fellows Selected',
+        image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1600&auto=format&fit=crop'
     }
 ];
 
@@ -58,13 +100,12 @@ export default function FeaturedProjects() {
         );
     }, { scope: containerRef });
 
-    // Initialize Embla: duration 45 for buttery smooth tracking per reference request
+    // Embla Carousel Setup for multiple visible cards
     const [emblaRef, emblaApi] = useEmblaCarousel({
         align: 'start',
-        dragFree: false,
-        loop: false,
-        skipSnaps: false,
-        duration: 45
+        containScroll: 'keepSnaps', // keepSnaps instead of trimSnaps required for proper loop
+        dragFree: true,
+        loop: true,
     });
 
     const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
@@ -87,133 +128,131 @@ export default function FeaturedProjects() {
         if (!emblaApi) return;
         onSelect(emblaApi);
         emblaApi.on('reInit', onSelect).on('select', onSelect);
+
+        // Auto-play interval
+        const autoplayId = setInterval(() => {
+            if (emblaApi) {
+                emblaApi.scrollNext();
+            }
+        }, 3000); // changes slide every 3 seconds
+
+        return () => clearInterval(autoplayId);
     }, [emblaApi, onSelect]);
 
     return (
-        <section ref={containerRef} className="w-full py-20 md:py-32 bg-[#121212]">
+        <section ref={containerRef} className="w-full py-20 md:py-32 bg-white overflow-hidden">
             <div className="max-w-[1440px] mx-auto flex flex-col gap-12 lg:gap-14 px-4 md:px-8 lg:px-12">
 
-                {/* 1. Global Header (Exact sizes & alignments) */}
+                {/* 1. Global Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 md:gap-4">
-                    <div className="flex flex-col items-start gap-5 md:gap-5">
-                        <span className="bg-[#1a1a1a] text-[#a0a0a0] px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-widest uppercase border border-white/5">
-                            Featured Projects
+                    <div className="flex flex-col items-start gap-4">
+                        <span className="bg-[#FFD43B] text-black px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase border border-black/5">
+                            Focus Areas
                         </span>
-                        <h2 className="text-5xl md:text-[4.5rem] lg:text-[5.5rem] font-bold leading-[1.05] tracking-tighter text-white m-0">
-                            <span className="text-[#666666]">How</span> we helped<br />other succeed
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900 m-0 flex items-center gap-4">
+                            Our Programmes
+                            <div className="w-3 h-3 md:w-4 md:h-4 bg-[#FFD43B] rounded-full mt-2"></div>
                         </h2>
-                        {/* Mobile Button: properly placed under heading */}
-                        <button className="bg-white text-black px-7 py-3 mt-2 rounded-[12px] md:hidden text-sm font-[600] tracking-[-0.2px] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-300 whitespace-nowrap">
-                            See all projects
-                        </button>
+                        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mt-2">
+                            Building futures through innovative educational initiatives across Gilgit-Baltistan
+                        </p>
                     </div>
-                    {/* Desktop Button: placed right */}
-                    <button className="bg-white text-black px-7 py-3 rounded-[12px] text-sm font-[600] tracking-[-0.2px] hover:-translate-y-1 hover:shadow-[0_4px_20px_rgba(255,255,255,0.15)] transition-all duration-300 whitespace-nowrap hidden md:block">
-                        See all projects
-                    </button>
-                </div>
 
-                {/* 2. Embla Carousel Track (Spaced with peeking next card) */}
-                <div className="relative">
-                    {/* Extract vertical bounds securely to prevent shadow clipping */}
-                    <div className="embla w-full overflow-hidden -my-16 py-16" ref={emblaRef}>
-                        {/* Reduce gap between uniquely sized cards for highly focused active slide */}
-                        <div className="embla__container flex gap-4 md:gap-5 lg:gap-6">
-
-                            {projects.map((project) => (
-                                <div key={project.id} className="embla__slide min-w-0 flex-[0_0_92%] sm:flex-[0_0_90%] md:flex-[0_0_92%] lg:flex-[0_0_100%] xl:flex-[0_0_100%]">
-                                    {/* Massive flex basis to simulate 1:1 focus, showing only a fraction of the next card */}
-                                    {/* 3. The Unified Dark Card */}
-                                    {/* Removed internal padding on parent to allow image to hit boundaries */}
-                                    <div className="w-full bg-[#191919] rounded-[24px] flex flex-col lg:flex-row shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden min-h-[500px] lg:min-h-[620px]">
-
-                                        {/* Left Panel: The Visual (~60%) */}
-                                        {/* Fixed mobile height collapse: min-h-[350px] forces visibility when flex-col */}
-                                        <div className="relative w-full lg:w-[60%] shrink-0 group bg-[#111] rounded-t-[24px] lg:rounded-t-none lg:rounded-l-[24px] overflow-hidden min-h-[300px] sm:min-h-[400px] lg:min-h-0">
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
-                                                draggable={false}
-                                            />
-
-                                            {/* Exact CSS Gradient from live site (rgba(32, 32, 32, 0.8) to transparent) */}
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[#202020]/80 to-transparent pointer-events-none z-20" />
-
-                                            {/* KPI Overlay */}
-                                            <div className="absolute bottom-6 md:bottom-10 lg:bottom-14 left-6 md:left-8 lg:left-12 z-30 flex flex-col">
-                                                {/* Scale for mobile, full extraction on desktop */}
-                                                <span className="text-white text-[56px] lg:text-[76px] font-[500] tracking-[-1.5px] leading-none mb-1">
-                                                    {project.kpi}
-                                                </span>
-                                                <span className="text-white text-[14px] lg:text-[18px] font-[500] tracking-tight ml-1">
-                                                    {project.kpiLabel}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        {/* Right Panel: The Details (~40%) */}
-                                        <div className="w-full lg:w-[40%] flex flex-col justify-between py-10 px-8 sm:px-10 lg:py-16 lg:px-12 xl:px-14">
-
-                                            {/* Top Data */}
-                                            <div className="flex flex-col items-start gap-4">
-                                                <span className="bg-[#242424] text-[#b4b4b4] px-3.5 py-1.5 rounded-[6px] text-[12px] font-[500] tracking-wide uppercase">
-                                                    {project.industry}
-                                                </span>
-                                                {/* Live site geometry: 43px, weight 500, spacing -1px - Responsively scaled to 32px on mobile */}
-                                                <h3 className="text-[32px] md:text-[43px] font-[500] tracking-[-1px] text-white leading-tight mt-1">
-                                                    {project.title}
-                                                </h3>
-                                            </div>
-
-                                            {/* Bottom Data */}
-                                            <div className="flex flex-col gap-1.5 mt-16 lg:mt-0">
-                                                {/* Live site geometry: 14px, #B4B4B4 */}
-                                                <span className="text-[#b4b4b4] text-[14px] font-[400] tracking-[-0.5px] uppercase mb-1">
-                                                    {project.category}
-                                                </span>
-                                                {/* Live site geometry: 18px, weight 500, pure #FFFFFF to create the rich/bright contrast */}
-                                                <p className="text-white text-[18px] font-[500] tracking-[-0.5px] leading-[1.6] max-w-[95%]">
-                                                    {project.description}
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                    </div> {/* End Unified Card */}
-                                </div>
-                            ))}
-
-                        </div>
-                    </div >
-                </div > {/* End Carousel Container Wrapper */}
-
-                {/* 4. External Slider Controls */}
-                <div className="flex justify-end items-center mt-6 md:mt-10 lg:mt-0 w-full">
-                    <div className="flex gap-4 sm:gap-6 ml-auto">
+                    {/* Navigation Controls moved to Top Right on Desktop */}
+                    <div className="flex gap-4 ml-auto self-end">
                         <button
                             onClick={scrollPrev}
-                            className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#18181A] hover:bg-white hover:text-black flex justify-center items-center text-white transition-all duration-300 border border-white/10 active:scale-95 disabled:opacity-30 disabled:hover:bg-[#18181A] disabled:hover:text-white disabled:cursor-not-allowed group"
+                            className="w-12 h-12 rounded-full bg-gray-100 hover:bg-[#FFD43B] hover:text-black flex justify-center items-center text-gray-800 transition-all duration-300 border border-black/5 active:scale-95 disabled:opacity-30 disabled:hover:bg-gray-100 disabled:hover:text-gray-800 disabled:cursor-not-allowed group"
                             disabled={prevBtnDisabled}
-                            aria-label="Previous project"
+                            aria-label="Previous programme"
                         >
-                            <svg width="12" height="20" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:-translate-x-1 transition-all duration-300 opacity-70 group-hover:opacity-100 group-hover:scale-110">
+                            <svg width="8" height="14" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:-translate-x-0.5 transition-all duration-300">
                                 <path d="M8.5 15L1.5 8L8.5 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
                         <button
                             onClick={scrollNext}
-                            className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-[#18181A] hover:bg-white hover:text-black flex justify-center items-center text-white transition-all duration-300 border border-white/10 active:scale-95 disabled:opacity-30 disabled:hover:bg-[#18181A] disabled:hover:text-white disabled:cursor-not-allowed group"
+                            className="w-12 h-12 rounded-full bg-gray-100 hover:bg-[#FFD43B] hover:text-black flex justify-center items-center text-gray-800 transition-all duration-300 border border-black/5 active:scale-95 disabled:opacity-30 disabled:hover:bg-gray-100 disabled:hover:text-gray-800 disabled:cursor-not-allowed group"
                             disabled={nextBtnDisabled}
-                            aria-label="Next project"
+                            aria-label="Next programme"
                         >
-                            <svg width="12" height="20" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:translate-x-1 transition-all duration-300 opacity-70 group-hover:opacity-100 group-hover:scale-110">
+                            <svg width="8" height="14" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:translate-x-0.5 transition-all duration-300">
                                 <path d="M1.5 1L8.5 8L1.5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
                     </div>
                 </div>
 
-            </div >
-        </section >
+                {/* 2. Embla Carousel Track */}
+                <div className="relative mt-4">
+                    <div className="embla w-full overflow-visible" ref={emblaRef}>
+                        <div className="embla__container flex gap-6">
+
+                            {programmes.map((programme) => (
+                                // Responsive widths: 1 card mobile, 2 tablet, 3 desktop
+                                <div key={programme.id} className="embla__slide flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0">
+
+                                    {/* The Clean Card */}
+                                    <div className="group w-full h-full bg-[#FFD43B] rounded-2xl flex flex-col border border-transparent hover:border-black/5 transition-colors duration-300 overflow-hidden hover:-translate-y-2 hover:shadow-[0_10px_40px_rgba(255,212,59,0.3)]">
+
+                                        {/* Image Section (Top) */}
+                                        <div className="relative w-full h-64 sm:h-72 overflow-hidden bg-black shrink-0 border-b border-black/5">
+                                            <img
+                                                src={programme.image}
+                                                alt={programme.title}
+                                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                                draggable={false}
+                                            />
+                                            {/* Gradient Overlay for Stat inside image bottom left */}
+                                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 to-transparent pointer-events-none z-10" />
+
+                                            {/* Category Tag Top Left - Black tag to contrast the yellow card */}
+                                            <div className="absolute top-4 left-4 z-20">
+                                                <span className="bg-black text-[#FFD43B] px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide uppercase shadow-lg">
+                                                    {programme.category}
+                                                </span>
+                                            </div>
+
+                                            {/* KPI Overlay Bottom Left */}
+                                            <div className="absolute bottom-4 left-5 z-20 flex flex-col">
+                                                <span className="text-[#FFD43B] text-4xl lg:text-5xl font-bold tracking-tighter leading-none mb-1 drop-shadow-md">
+                                                    {programme.stat}
+                                                </span>
+                                                <span className="text-white/90 text-[13px] font-medium tracking-wide">
+                                                    {programme.statLabel}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Content Section (Bottom) */}
+                                        <div className="p-6 lg:p-8 flex flex-col flex-grow justify-between">
+                                            <div>
+                                                <h3 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 leading-tight mb-3 group-hover:text-black transition-colors duration-300">
+                                                    {programme.title}
+                                                </h3>
+                                                <p className="text-gray-800 text-[15px] leading-relaxed font-medium">
+                                                    {programme.description}
+                                                </p>
+                                            </div>
+
+                                            {/* Optional Learn More Link */}
+                                            <div className="mt-8 flex items-center gap-2 text-black/60 group-hover:text-black transition-colors duration-300 text-sm font-bold uppercase tracking-wider cursor-pointer w-fit">
+                                                Learn More
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:translate-x-1 transition-transform duration-300">
+                                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            ))}
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     );
 }
