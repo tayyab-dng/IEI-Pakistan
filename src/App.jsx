@@ -42,17 +42,13 @@ export default function App() {
     return () => ctx.revert();
   }, []);
 
-  // Custom scroll physics for maximum "buttery" feel
+  // Standard smooth scroll physics for maximum performance and "buttery" feel
   const lenisOptions = {
-    duration: 1.8, // Lengthen the scroll duration (default 1.2)
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Luxurious Deceleration
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     direction: 'vertical',
     gestureDirection: 'vertical',
     smooth: true,
-    smoothTouch: false,
-    touchMultiplier: 2,
-    wheelMultiplier: 0.8, // Slightly dampen the physical wheel output for extra weight
-    infinite: false,
   };
 
   return (

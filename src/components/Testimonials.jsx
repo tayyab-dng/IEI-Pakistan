@@ -5,8 +5,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Generate 200 random dots for the floating particle effect
-const DOTS = Array.from({ length: 200 }, (_, i) => ({
+// Generate 50 random dots for a lightweight floating particle effect
+const DOTS = Array.from({ length: 50 }, (_, i) => ({
     id: i + 1,
     size: Math.random() * 5 + 5, // size between 5px and 10px
     left: Math.random() * 100, // 0% to 100% horizontal
