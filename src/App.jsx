@@ -14,7 +14,6 @@ import HowWeWork from './components/HowWeWork';
 import Testimonials from './components/Testimonials';
 import Services from './components/Services';
 import Marquee from './components/Marquee';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -68,7 +67,6 @@ export default function App() {
         <CoreValues />
         <HowWeWork />
         <Testimonials />
-        <Contact />
         <Marquee />
         <Footer />
       </main>

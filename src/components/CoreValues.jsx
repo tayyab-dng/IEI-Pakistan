@@ -8,95 +8,70 @@ gsap.registerPlugin(ScrollTrigger);
 const valuesData = [
     {
         id: 1,
-        title: "Creative\nExcellence",
-        description: "We craft impactful, original designs that make your brand unforgettable and deeply resonate with your audience.",
-        iconType: "creative"
+        title: "Community-\nCentered",
+        description: "We work alongside local communities, respecting their culture and wisdom while co-creating sustainable educational solutions.",
+        iconType: "community"
     },
     {
         id: 2,
-        title: "Customised\nSolutions",
-        description: "Tailored strategies crafted to meet your unique business needs, ensuring your vision is brought to life with precision and purpose.",
-        iconType: "custom"
+        title: "Volunteer-\nDriven",
+        description: "Passionate volunteers from across Pakistan live and teach in remote areas, creating meaningful connections and lasting impact.",
+        iconType: "volunteer"
     },
     {
         id: 3,
-        title: "Integrated\nExpertise",
-        description: "We integrate design and development to craft engaging, functional digital experiences using advanced technologies.",
-        iconType: "integrated"
+        title: "Innovation in\nEducation",
+        description: "We integrate arts, technology, and modern teaching methods with traditional learning to create engaging educational experiences.",
+        iconType: "innovation"
     },
     {
         id: 4,
-        title: "Open\nCommunication",
-        description: "We believe in open, honest collaboration. You'll always know where your project stands, with clear updates at every stage of the journey.",
-        iconType: "open"
+        title: "Transparency &\nTrust",
+        description: "We maintain open communication with all stakeholders, sharing our journey, challenges, and successes at every stage.",
+        iconType: "transparency"
     }
 ];
 
 // Reusable Icon Renderer based on type
 const GridIcon = ({ type }) => {
     switch (type) {
-        case 'creative':
-            // Magic Sparkles / Stars (Orange) with gradient & shadow
+        case 'community':
+            // People/community (White)
             return (
-                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 8px 16px rgba(240, 124, 107, 0.4))' }}>
-                    <defs>
-                        <linearGradient id="grad-creative" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#FAD3C3" />
-                            <stop offset="1" stopColor="#F07C6B" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M19 2C19 2 21 14 33 16C21 18 19 30 19 30C19 30 17 18 5 16C17 14 19 2 19 2Z" fill="url(#grad-creative)" />
-                    <path d="M31 25C31 25 32 31 37 32C32 33 31 39 31 39C31 39 30 33 25 32C30 31 31 25 31 25Z" fill="url(#grad-creative)" />
-                    <path d="M11 29C11 29 12 33 15 34C12 35 11 39 11 39C11 39 10 35 7 34C10 33 11 29 11 29Z" fill="url(#grad-creative)" />
+                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15))' }}>
+                    <circle cx="20" cy="12" r="5" fill="#ffffff" />
+                    <circle cx="12" cy="16" r="4" fill="#ffffff" opacity="0.8" />
+                    <circle cx="28" cy="16" r="4" fill="#ffffff" opacity="0.8" />
+                    <path d="M20 20 C14 20, 8 24, 8 30 L32 30 C32 24, 26 20, 20 20 Z" fill="#ffffff" />
                 </svg>
             );
-        case 'custom':
-            // Settings / Sliders (Green) with gradient & shadow
+        case 'volunteer':
+            // Hands holding heart (White)
             return (
-                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 8px 16px rgba(72, 229, 155, 0.4))' }}>
-                    <defs>
-                        <linearGradient id="grad-custom" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#A2F5CD" />
-                            <stop offset="1" stopColor="#48E59B" />
-                        </linearGradient>
-                    </defs>
-                    <rect x="6" y="10" width="28" height="5" rx="2.5" fill="url(#grad-custom)" />
-                    <rect x="6" y="25" width="28" height="5" rx="2.5" fill="url(#grad-custom)" />
-                    <circle cx="15" cy="12.5" r="5" fill="#48E59B" stroke="#0a0a0a" strokeWidth="2" />
-                    <circle cx="27" cy="27.5" r="5" fill="#48E59B" stroke="#0a0a0a" strokeWidth="2" />
+                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15))' }}>
+                    <path d="M20 28 C10 28, 4 22, 10 22 C12 22, 16 25, 20 25 C24 25, 28 22, 30 22 C36 22, 30 28, 20 28 Z" fill="#ffffff" opacity="0.7" />
+                    <path d="M20 24 C20 24, 12 16, 12 12 C12 8, 16 6, 20 10 C24 6, 28 8, 28 12 C28 16, 20 24, 20 24 Z" fill="#ffffff" />
                 </svg>
             );
-        case 'integrated':
-            // Connected Nodes / Grid (Blue) with gradient & shadow
+        case 'innovation':
+            // Lightbulb (White)
             return (
-                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 8px 16px rgba(120, 179, 234, 0.4))' }}>
-                    <defs>
-                        <linearGradient id="grad-integrated" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#BFE0FC" />
-                            <stop offset="1" stopColor="#78B3EA" />
-                        </linearGradient>
-                    </defs>
-                    <rect x="6" y="6" width="12" height="12" rx="3" fill="url(#grad-integrated)" />
-                    <rect x="22" y="6" width="12" height="12" rx="3" fill="url(#grad-integrated)" />
-                    <rect x="6" y="22" width="12" height="12" rx="3" fill="url(#grad-integrated)" />
-                    <path d="M22 28h5a3 3 0 0 0 3 -3v-5" stroke="url(#grad-integrated)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                    <circle cx="28" cy="28" r="5" fill="#BFE0FC" />
+                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15))' }}>
+                    <circle cx="20" cy="16" r="10" fill="#ffffff" opacity="0.9" />
+                    <rect x="16" y="26" width="8" height="6" rx="2" fill="#ffffff" />
+                    <path d="M14 16 L26 16 M17 12 L23 12" stroke="#000" strokeWidth="2" strokeLinecap="round" opacity="0.2" />
+                    <path d="M12 8 L8 4 M28 8 L32 4 M20 4 L20 0" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
                 </svg>
             );
-        case 'open':
-            // Chat Bubble (Peach) with gradient & shadow
+        case 'transparency':
+            // Trust/Communication (White)
             return (
-                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 8px 16px rgba(240, 195, 182, 0.4))' }}>
-                    <defs>
-                        <linearGradient id="grad-open" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#F9E2DB" />
-                            <stop offset="1" stopColor="#F0C3B6" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M28 6H12C8.68629 6 6 8.68629 6 12V22C6 25.3137 8.68629 28 12 28H14V34L22 28H28C31.3137 28 34 25.3137 34 22V12C34 8.68629 31.3137 6 28 6Z" fill="url(#grad-open)" />
-                    <circle cx="14" cy="17" r="2.5" fill="#0A0A0A" />
-                    <circle cx="20" cy="17" r="2.5" fill="#0A0A0A" />
-                    <circle cx="26" cy="17" r="2.5" fill="#0A0A0A" />
+                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ filter: 'drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.15))' }}>
+                    <path d="M8 12 C8 8, 12 8, 12 8 L28 8 C28 8, 32 8, 32 12 L32 24 C32 28, 28 28, 28 28 L16 28 L8 34 L8 12 Z" fill="#ffffff" opacity="0.9" />
+                    <path d="M14 20 C14 14, 20 14, 20 14 L36 14 C36 14, 40 14, 40 20 L40 28 C40 32, 36 32, 36 32 L36 38 L28 32 L16 32" fill="none" stroke="#ffffff" strokeWidth="3" opacity="0.6" strokeLinecap="round" />
+                    <circle cx="14" cy="18" r="2" fill="#000" opacity="0.4" />
+                    <circle cx="20" cy="18" r="2" fill="#000" opacity="0.4" />
+                    <circle cx="26" cy="18" r="2" fill="#000" opacity="0.4" />
                 </svg>
             );
         default:
@@ -109,33 +84,34 @@ export default function CoreValues() {
     const textRef = useRef(null);
     const gridRef = useRef(null);
 
-    // Grouping words into hardcoded rows to match the reference exactly
+    // Grouping words into balanced rows to fit exactly on 5 lines
     const textLines = [
         [
             { text: "We", tone: "dark" },
-            { text: "blend", tone: "dark" },
-            { text: "cutting-edge", tone: "light" },
-            { text: "technology", tone: "light" },
+            { text: "bridge", tone: "dark" },
+            { text: "educational", tone: "light" },
+            { text: "gaps", tone: "light" },
+            { text: "through", tone: "dark" },
         ],
         [
-            { text: "with", tone: "dark" },
-            { text: "strategic", tone: "light" },
-            { text: "design", tone: "light" },
-            { text: "to", tone: "dark" },
-            { text: "build", tone: "dark" },
+            { text: "community-driven", tone: "light" },
+            { text: "programs,", tone: "light" },
+            { text: "volunteer", tone: "light" },
+            { text: "engagement,", tone: "light" },
+            { text: "and", tone: "dark" },
         ],
         [
-            { text: "memorable", tone: "light" },
-            { text: "online", tone: "light" },
-            { text: "identities", tone: "light" },
+            { text: "innovative", tone: "light" },
+            { text: "teaching", tone: "light" },
+            { text: "methods", tone: "light" },
             { text: "that", tone: "dark" },
         ],
         [
-            { text: "capture", tone: "light" },
-            { text: "hearts", tone: "light" },
+            { text: "transform", tone: "dark" },
+            { text: "lives", tone: "dark" },
             { text: "and", tone: "dark" },
-            { text: "drive", tone: "light" },
-            { text: "growth.", tone: "light" },
+            { text: "empower", tone: "light" },
+            { text: "futures.", tone: "light" },
         ]
     ];
 
@@ -171,66 +147,47 @@ export default function CoreValues() {
             }
         );
 
-        // Flashlight Grid Mouse Tracking
-        const xSetter = gsap.quickSetter(sectionRef.current, '--x', 'px');
-        const ySetter = gsap.quickSetter(sectionRef.current, '--y', 'px');
-
-        const handleMouseMove = (e) => {
-            if (!sectionRef.current) return;
-            const rect = sectionRef.current.getBoundingClientRect();
-            xSetter(e.clientX - rect.left);
-            ySetter(e.clientY - rect.top);
-        };
-
-        const maskLayer = sectionRef.current.querySelector('.corevalues-mask');
-        const handleMouseEnter = () => {
-            gsap.to(maskLayer, { opacity: 0.8, duration: 0.5, ease: "power2.out", overwrite: "auto" });
-        };
-        const handleMouseLeave = () => {
-            gsap.to(maskLayer, { opacity: 0, duration: 0.5, ease: "power2.out", overwrite: "auto" });
-        };
-
-        const currentRef = sectionRef.current;
-        currentRef.addEventListener('mousemove', handleMouseMove);
-        currentRef.addEventListener('mouseenter', handleMouseEnter);
-        currentRef.addEventListener('mouseleave', handleMouseLeave);
-
-        return () => {
-            currentRef.removeEventListener('mousemove', handleMouseMove);
-            currentRef.removeEventListener('mouseenter', handleMouseEnter);
-            currentRef.removeEventListener('mouseleave', handleMouseLeave);
-        };
-
     }, { scope: sectionRef });
 
     return (
-        <section ref={sectionRef} className="relative w-full min-h-screen py-10 md:py-16 bg-[#0a0a0a] overflow-hidden flex flex-col justify-center" style={{ '--x': '50%', '--y': '50%' }}>
-            {/* Flashlight CSS Mask Pattern Layer */}
-            <div
-                className="corevalues-mask absolute inset-0 z-[0] pointer-events-none opacity-0 mix-blend-screen"
-                style={{
-                    backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.8) 1px, transparent 0)',
-                    backgroundSize: '32px 32px',
-                    maskImage: 'radial-gradient(circle at var(--x) var(--y), rgba(0,0,0,1), transparent 25vw)',
-                    WebkitMaskImage: 'radial-gradient(circle at var(--x) var(--y), rgba(0,0,0,1), transparent 25vw)',
-                }}
-            ></div>
+        <section ref={sectionRef} className="relative w-full min-h-screen py-10 md:py-16 overflow-hidden flex flex-col justify-center">
 
-            {/* Main Content Container left-aligned and fitted */}
-            <div className="relative w-full max-w-[1100px] px-6 md:px-12 lg:px-24 mx-auto flex flex-col items-start z-10">
+            {/* Background Image & Vignette */}
+            <div className="absolute inset-0 w-full h-full z-0">
+                <img
+                    src="/images/corevaluebg.jpg"
+                    alt="Core Values Background"
+                    className="w-full h-full object-cover"
+                />
+                {/* Global Vignette/Darkening Overlay for text readability */}
+                <div className="absolute inset-0 bg-[#3D3300]/80 md:bg-[#3D3300]/60 z-10"></div>
+                {/* Edge Vignette */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#3D3300]/40 to-[#3D3300]/90 z-20"></div>
+            </div>
 
-                {/* --- The Large Scroll-Animated Typography --- */}
-                <div className="w-full mb-10 md:mb-16">
+            {/* Main Content Container */}
+            <div className="relative w-full max-w-[1440px] px-6 md:px-12 lg:px-24 mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between z-10 gap-12 lg:gap-8">
+
+                {/* --- The Large Scroll-Animated Typography (Left Side) --- */}
+                <div className="w-full lg:w-[45%] relative flex flex-col justify-between lg:pr-8 py-2 md:py-0">
+                    {/* IEI Pakistan Logo */}
+                    <div className="mb-8 md:mb-8">
+                        <img
+                            src="/images/iei-logo.png"
+                            alt="IEI Pakistan"
+                            className="h-16 md:h-20 w-auto object-contain drop-shadow-sm"
+                        />
+                    </div>
                     <h2
                         ref={textRef}
-                        className="text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[3.8rem] font-medium leading-[1.1] tracking-tight flex flex-col items-start"
+                        className="text-4xl md:text-5xl lg:text-[3em] xl:text-[3.75rem] font-serif leading-[1.12] tracking-[-0.02em] flex flex-col items-start relative z-10 drop-shadow-sm"
                     >
                         {textLines.map((line, lineIdx) => (
                             <div key={lineIdx} className="flex flex-wrap gap-x-[0.25em] md:gap-x-[0.3em]">
                                 {line.map((wordObj, wordIdx) => (
                                     <span
                                         key={wordIdx}
-                                        className={`inline-block ${wordObj.tone === 'light' ? 'text-white' : 'text-[#666666]'}`}
+                                        className={`inline-block ${wordObj.tone === 'light' ? 'text-white italic' : 'text-[#ffcc00] font-medium'}`}
                                     >
                                         {wordObj.text}
                                     </span>
@@ -241,17 +198,18 @@ export default function CoreValues() {
                 </div>
 
 
-                {/* --- The 2x2 Core Values Grid --- */}
-                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 md:gap-x-16 md:gap-y-12 w-full max-w-[1000px]">
+                {/* --- The 2x2 Core Values Grid (Right Side) --- */}
+                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6 md:gap-x-12 md:gap-y-8 w-full lg:w-[55%] relative z-10">
                     {valuesData.map((val) => (
-                        <div key={val.id} className="flex flex-col items-start text-left group cursor-pointer">
-                            <div className="grid-icon-wrapper mb-5 md:mb-6 transition-transform duration-500 ease-out group-hover:scale-110 origin-left">
+                        <div key={val.id} className="flex flex-col items-start text-left group cursor-pointer relative p-6 md:p-8 rounded-[2.5rem] transition-all duration-500 hover:bg-white/10 hover:shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-transparent hover:border-white/20 hover:-translate-y-2">
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 rounded-[2.5rem] transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="grid-icon-wrapper mb-5 md:mb-6 transition-transform duration-500 ease-out group-hover:scale-110 origin-left relative z-10">
                                 <GridIcon type={val.iconType} />
                             </div>
-                            <h3 className="text-white text-2xl md:text-3xl font-medium tracking-[-0.03em] leading-[1.15] mb-3 whitespace-pre-line">
+                            <h3 className="text-[#ffcc00] font-serif text-2xl md:text-3xl font-medium tracking-tight leading-[1.2] mb-3 whitespace-pre-line relative z-10 drop-shadow-sm">
                                 {val.title}
                             </h3>
-                            <p className="text-[#a0a0a0] text-sm md:text-base font-normal leading-[1.6] max-w-[400px]">
+                            <p className="text-white/90 text-sm md:text-base font-medium leading-[1.7] max-w-[400px] relative z-10">
                                 {val.description}
                             </p>
                         </div>

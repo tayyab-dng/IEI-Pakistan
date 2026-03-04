@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         sans: ['Satoshi', 'sans-serif'], // Body Text
         display: ['Nohemi', 'sans-serif'], // Headings
+        serif: ['"Playfair Display"', 'serif'], // Elegant Text
       },
       fontSize: {
         'hero': 'clamp(4rem, 10vw, 12rem)',

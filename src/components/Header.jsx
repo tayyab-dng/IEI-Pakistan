@@ -48,7 +48,7 @@ export default function Header({ timeline }) {
                 <div
                     className="text-body-lg font-bold tracking-tight uppercase cursor-pointer"
                 >
-                    vantax<span className="text-accent">.</span>studio
+                    IEI<span className="text-[#ffcc00] ml-1">Pakistan</span>
                 </div>
 
                 {/* Menu Trigger */}

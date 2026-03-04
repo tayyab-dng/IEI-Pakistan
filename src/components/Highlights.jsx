@@ -6,10 +6,10 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const statsData = [
-    { target: 80, suffix: '+', label: 'Projects Completed', color: '#FF4A5A' },
-    { target: 12, suffix: '+', label: 'Years Experience', color: '#C1EE1E' },
-    { target: 95, suffix: '%', label: 'Client Retention Rate', color: '#1DB954' },
-    { target: 32, suffix: '%', label: 'Increased Conversions', color: '#2B70FF' },
+    { target: 1000, suffix: '+', label: 'Lives Changed', color: '#ffcc00' },
+    { target: 9, suffix: '', label: 'Years of Impact', color: '#ffcc00' },
+    { target: 500, suffix: '+', label: 'Volunteers participated', color: '#ffcc00' },
+    { target: 7, suffix: '', label: 'Programmes Running', color: '#ffcc00' },
 ];
 
 export default function Highlights() {
@@ -94,28 +94,25 @@ export default function Highlights() {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="relative w-full py-24 md:py-40 bg-[#121212] overflow-hidden">
+        <section ref={containerRef} className="relative w-full pt-4 pb-16 md:pt-8 md:pb-24 bg-white overflow-hidden">
             {/* Global Constrained Wrapper for Perfect Left/Right Alignment */}
             <div className="w-full max-w-[1440px] px-4 md:px-8 lg:px-12 mx-auto">
                 {/* Header Layout */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 md:mb-32 gap-8">
+                <div className="flex flex-col mb-16 md:mb-20">
                     <div className="max-w-3xl">
-                        <span className="text-white/40 bg-[#1A1A1A] uppercase tracking-widest text-[0.8rem] md:text-[0.9rem] font-bold mb-8 block rounded-full px-5 py-2 w-fit">HIGHLIGHTS</span>
-                        <h2 className="text-6xl md:text-[5.5rem] lg:text-[6.5rem] font-medium leading-[1] tracking-[-0.03em] text-[#5A5A5A]">
+                        <span className="text-gray-500 uppercase tracking-widest text-sm md:text-base font-bold mb-4 block">OUR IMPACT</span>
+                        <h2 className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold md:font-black font-serif leading-[1] tracking-[-0.03em] text-[#ffcc00]">
                             Numbers that <br className="hidden md:block" />
-                            <span className="text-white">drive success</span>
+                            <span className="text-[#ffcc00]">tell our story</span>
                         </h2>
                     </div>
-                    <button className="px-8 py-4 md:px-10 md:py-5 bg-white text-black font-semibold rounded-xl text-lg hover:bg-gray-200 transition-colors pointer-events-auto whitespace-nowrap mb-2 md:mb-6">
-                        More about us
-                    </button>
                 </div>
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-24 md:gap-y-32">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-y-20 gap-x-8">
                     {statsData.map((stat, i) => (
                         <div key={i} className={`flex flex-col items-start w-full md:w-[320px] lg:w-[420px] xl:w-[480px] ${i % 2 !== 0 ? 'md:justify-self-end' : 'md:justify-self-start'}`}>
-                            <div className="flex items-center gap-6 md:gap-8 mb-4">
+                            <div className="flex items-center gap-4 md:gap-6 mb-2">
                                 {/* Colored Accent Dot with Halo */}
                                 <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shrink-0">
                                     <div className="relative w-5 h-5 md:w-5.5 md:h-5.5 flex items-center justify-center">
@@ -132,13 +129,13 @@ export default function Highlights() {
                                     </div>
                                 </div>
                                 {/* Massive Number */}
-                                <div className="text-[6rem] md:text-[clamp(8rem,13.5vw,13.5rem)] font-medium text-white tracking-[-0.05em] leading-[0.8]">
+                                <div className="text-[5.5rem] md:text-[clamp(7rem,12vw,12rem)] font-bold md:font-black tracking-[-0.05em] leading-[0.8] text-black">
                                     <span ref={el => numRefs.current[i] = el} data-target={stat.target}>0</span>
                                     {stat.suffix}
                                 </div>
                             </div>
                             {/* Descriptive Label */}
-                            <p className="text-2xl md:text-[2rem] text-white/40 font-medium ml-[4.5rem] md:ml-[6rem] leading-tight">{stat.label}</p>
+                            <p className="text-lg md:text-3xl text-gray-600 font-semibold ml-[3.5rem] md:ml-[5rem] leading-tight">{stat.label}</p>
                         </div>
                     ))}
                 </div>

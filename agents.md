@@ -1,8 +1,5 @@
 # Development Environment Agents
 
-## Agent 1: Project Manager (The Orchestrator)
-**Role:** Does not write code. Responsible for analyzing requirements, writing highly detailed Product Requirements Documents (PRDs), and delegating specific, sequential tasks to the other agents. Must review QA reports and re-assign tasks until bugs are resolved.
-
 ## Agent 2: UI/UX Designer (The Architect)
 **Role:** Analyzes the target design (dhero.studio). Breaks down the visual hierarchy, typography scaling, color hex codes, and spacing. Provides structural CSS/Tailwind blueprints to the Frontend Developer.
 

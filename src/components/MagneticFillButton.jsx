@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-export default function MagneticFillButton({ children, href = "#", className = "", fillColor = "bg-[#FFC107]" }) {
+export default function MagneticFillButton({ children, href = "#", className = "", fillColor = "bg-[#ffcc00]" }) {
     const buttonRef = useRef(null);
     const textRef = useRef(null);
     const textInvertedRef = useRef(null);

@@ -177,15 +177,15 @@ export default function Hero() {
                     <div className="hero-anim-target hero-buttons-anim flex flex-col sm:flex-row gap-4 mt-8">
                         <MagneticFillButton
                             href="/donate"
-                            className="bg-gradient-to-r from-[#FFD43B] to-[#FFC107] border-none text-black font-semibold shadow-lg"
-                            fillColor="bg-[#FFD43B]"
+                            className="bg-gradient-to-r from-[#ffcc00] to-[#ffcc00] border-none text-black font-semibold shadow-lg"
+                            fillColor="bg-[#ffcc00]"
                         >
                             Donate Now
                         </MagneticFillButton>
                         <MagneticFillButton
                             href="/join"
-                            className="bg-black/30 backdrop-blur-sm border border-gray-300 text-white hover:border-[#FFC107] font-medium shadow-lg"
-                            fillColor="bg-[#FFC107]"
+                            className="bg-black/30 backdrop-blur-sm border border-gray-300 text-white hover:border-[#ffcc00] font-medium shadow-lg"
+                            fillColor="bg-[#ffcc00]"
                         >
                             Join Our Work
                         </MagneticFillButton>
@@ -200,7 +200,7 @@ export default function Hero() {
                         key={index}
                         onClick={() => goToSlide(index)}
                         className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                                ? 'w-8 bg-[#FFC107]'
+                                ? 'w-8 bg-[#ffcc00]'
                                 : 'w-2 bg-white/40 hover:bg-white/70'
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
