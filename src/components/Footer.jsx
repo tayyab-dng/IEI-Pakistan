@@ -9,8 +9,10 @@ export default function Footer() {
             <div className="flex-1 flex flex-col items-center justify-center relative px-4 md:px-8">
 
                 {/* Massive Typography - Static Yellow Text */}
-                <h2 className="text-[14vw] font-bold uppercase tracking-tighter leading-[0.8] text-center max-w-full text-[#FFD43B]">
-                    Let's Create<br />Impact
+                <h2 className="text-[22vw] font-bold uppercase tracking-tighter leading-[0.85] text-center max-w-full text-white">
+                    <span className="block">Let's</span>
+                    <span className="block mt-2 md:mt-4">Create</span>
+                    <span className="block mt-2 md:mt-4 text-[#FFD43B]">Impact</span>
                 </h2>
 
             </div>

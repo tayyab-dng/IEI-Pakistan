@@ -70,7 +70,7 @@ const solutionsData = [
         description: 'Join our volunteer teaching programs and experience the adventure of a lifetime while making real impact in remote mountain communities.',
         buttonText: 'Apply Now',
         icon: <BackpackIcon />,
-        topOffset: 'top-32'
+        topOffset: 'top-20 md:top-32'
     },
     {
         id: '2',
@@ -80,7 +80,7 @@ const solutionsData = [
         description: 'Your contribution directly supports students, teachers, and learning resources in remote communities. Every rupee creates lasting change.',
         buttonText: 'Donate Now',
         icon: <HandsIcon />,
-        topOffset: 'top-40'
+        topOffset: 'top-24 md:top-40'
     },
     {
         id: '3',
@@ -90,7 +90,7 @@ const solutionsData = [
         description: 'Collaborate with IEI on large-scale educational initiatives and corporate social responsibility programs that create sustainable impact.',
         buttonText: 'Partner With Us',
         icon: <WavingGirlsIcon />,
-        topOffset: 'top-48'
+        topOffset: 'top-28 md:top-48'
     }
 ];
 
@@ -106,8 +106,9 @@ export default function Solutions() {
                         <span className="bg-gray-100 text-gray-500 px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-widest uppercase border border-gray-200">
                             GET INVOLVED
                         </span>
-                        <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tighter text-[#ffcc00] m-0 max-w-[800px]">
-                            JOIN THE MOVEMENT
+                        <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-black leading-[1.05] tracking-tighter m-0 max-w-[800px]">
+                            <span className="text-[#ffcc00] block">JOIN THE</span>
+                            <span className="text-black block mt-1 md:mt-2">MOVEMENT</span>
                         </h2>
                     </div>
                 </div>
@@ -118,7 +119,7 @@ export default function Solutions() {
                     {solutionsData.map((card, index) => (
                         <div
                             key={card.id}
-                            className={`sticky ${card.topOffset} w-full ${card.bgColor} rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row shadow-2xl border border-white/5 transition-transform duration-500`}
+                            className={`sticky ${card.topOffset} w-full ${card.bgColor} rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 lg:p-16 flex flex-col lg:flex-row shadow-2xl border border-white/5 transition-transform duration-500`}
                         // We can use native tailwind top- classes for mobile and calc for desktop if needed, 
                         // but for simplicity the topOffset class provides the stacking offsets.
                         >
@@ -145,7 +146,7 @@ export default function Solutions() {
                                     </p>
                                 </div>
 
-                                <div className="mt-8 lg:mt-0 lg:absolute lg:bottom-16">
+                                <div className="mt-6 lg:mt-0 lg:absolute lg:bottom-16">
                                     <button className="bg-[#ffcc00] text-[#0a0a0a] px-6 py-2.5 rounded-[12px] font-bold tracking-wide text-sm hover:bg-[#e6b800] transition-colors w-max shadow-[0_4px_14px_rgba(255,204,0,0.25)]">
                                         {card.buttonText}
                                     </button>
@@ -153,9 +154,9 @@ export default function Solutions() {
                             </div>
 
                             {/* Massive Decorative Icon Side (Bottom on mobile, Right on desktop) */}
-                            <div className="w-full lg:w-[40%] flex justify-center lg:justify-end items-center mt-16 md:mt-24 lg:mt-0 relative overflow-visible lg:overflow-hidden min-h-[250px] lg:min-h-[auto] z-0">
+                            <div className="w-full lg:w-[40%] flex justify-center lg:justify-end items-center mt-8 md:mt-24 lg:mt-0 relative overflow-visible lg:overflow-hidden min-h-[160px] lg:min-h-[auto] z-0">
                                 {/* Mobile pushes SVG into the visible flow; Desktop floats it absolute on right edge */}
-                                <div className="w-[300px] h-[300px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] relative lg:absolute lg:right-[-15%] xl:right-[-10%] opacity-90 lg:opacity-50 transform group-hover:scale-105 transition-transform duration-700">
+                                <div className="w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] lg:w-[450px] lg:h-[450px] relative lg:absolute lg:right-[-15%] xl:right-[-10%] opacity-90 lg:opacity-50 transform group-hover:scale-105 transition-transform duration-700">
                                     {card.icon}
                                 </div>
                             </div>

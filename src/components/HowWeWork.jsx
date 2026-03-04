@@ -104,14 +104,15 @@ export default function HowWeWork() {
     return (
         <section ref={containerRef} className="w-full h-auto min-h-screen lg:h-screen lg:min-h-[600px] py-10 md:py-16 lg:py-12 bg-white flex flex-col items-center justify-center overflow-hidden relative">
 
-            {/* Expanded width to 1600px (or 98%) to occupy extreme screen real estate */}
-            <div className="w-full max-w-[1600px] w-[98%] md:w-[96%] mx-auto flex flex-col justify-center h-full z-10 px-0 md:px-6">
+            {/* Expanded width to 1600px to occupy extreme screen real estate */}
+            <div className="w-full max-w-[1600px] mx-auto flex flex-col justify-center h-full z-10 px-4 md:px-8 lg:px-12">
 
                 {/* Header Section */}
                 <div className="hww-header w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-8">
                     <div className="flex flex-col items-start text-left">
-                        <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-medium leading-[1.1] tracking-tight text-black mb-4 md:mb-0">
-                            OUR PROGRAMMES
+                        <h2 className="text-4xl md:text-5xl lg:text-[4.5rem] font-medium leading-[1.1] tracking-tight mb-4 md:mb-0">
+                            <span className="text-black block">OUR</span>
+                            <span className="text-[#ffcc00] block mt-1">PROGRAMMES</span>
                         </h2>
                     </div>
                     <button className="bg-[#ffcc00] text-[#3D3300] font-bold text-sm md:text-base px-6 py-3 rounded-xl hover:bg-[#e6b800] transition-colors">
@@ -141,7 +142,7 @@ export default function HowWeWork() {
                         <div ref={contentRef} className="flex flex-col md:flex-row w-full h-full min-h-[450px] md:min-h-[500px] relative">
 
                             {/* Text Content - Shift padding inside */}
-                            <div className="w-full md:w-[50%] flex flex-col justify-between p-6 lg:p-14 pb-12 pr-0 md:pr-12 relative z-10 pointer-events-none">
+                            <div className="w-full md:w-[50%] flex flex-col justify-between p-6 px-10 md:px-6 lg:p-14 pb-12 relative z-10 pointer-events-none">
                                 <div className="pointer-events-auto">
                                     <span className="font-display text-[#3D3300]/40 text-5xl md:text-[5.5rem] font-light tracking-tighter mb-4 md:mb-10 block">
                                         {currentSlide.id}

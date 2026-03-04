@@ -155,7 +155,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/90 z-20 pointer-events-none"></div>
             </div>
 
-            <div className="relative z-30 max-w-[1440px] mx-auto w-full px-4 md:px-8 lg:px-12 pt-20">
+            <div className="relative z-30 max-w-[1440px] mx-auto w-full px-4 md:px-8 lg:px-12 pt-0 md:pt-20">
                 <div className="flex flex-col items-center text-center gap-6 max-w-4xl mx-auto">
 
                     <p className="hero-anim-target hero-overline text-sm md:text-base text-gray-300 uppercase tracking-widest font-medium drop-shadow-md">
@@ -194,14 +194,14 @@ export default function Hero() {
             </div>
 
             {/* Slide Navigation Dots */}
-            <div className="absolute bottom-24 lg:bottom-32 left-1/2 -translate-x-1/2 flex items-center gap-3 z-30">
+            <div className="absolute bottom-8 md:bottom-24 lg:bottom-32 left-1/2 -translate-x-1/2 flex items-center gap-3 z-30">
                 {slides.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => goToSlide(index)}
                         className={`h-2 rounded-full transition-all duration-300 ${index === currentSlide
-                                ? 'w-8 bg-[#ffcc00]'
-                                : 'w-2 bg-white/40 hover:bg-white/70'
+                            ? 'w-8 bg-[#ffcc00]'
+                            : 'w-2 bg-white/40 hover:bg-white/70'
                             }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
@@ -209,7 +209,7 @@ export default function Hero() {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center text-white/60 gap-3 z-30">
+            <div className="hero-scroll hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center justify-center text-white/60 gap-3 z-30">
                 <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium">Scroll</span>
                 <div className="w-[1px] h-8 bg-white/20 relative overflow-hidden">
                     <div className="scroll-dot w-[3px] h-[3px] bg-white rounded-full absolute top-0 -left-[1px]"></div>
